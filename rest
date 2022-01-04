@@ -1,0 +1,533 @@
+https://docs.github.com/en/rest/overview/endpoints-available-for-github-apps
+
+actions
+
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/artifacts
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/artifacts/{artifact_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/artifacts/{artifact_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/artifacts/{artifact_id}/{archive_format}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/jobs/{job_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/jobs/{job_id}/logs
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/permissions
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/permissions
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/permissions/selected-actions
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/permissions/selected-actions
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runners
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runners/downloads
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runners/registration-token
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runners/remove-token
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}/labels
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}/labels
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}/labels
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}/labels
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/runners/{runner_id}/labels/{name}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/approvals
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/approve
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/artifacts
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/attempts/{attempt_number}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/attempts/{attempt_number}/jobs
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/attempts/{attempt_number}/logs
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/cancel
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/jobs
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/logs
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/logs
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/pending_deployments
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/runs/{run_id}/pending_deployments
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/secrets
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/secrets/public-key
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/secrets/{secret_name}
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/secrets/{secret_name}
+delete  https://api.github.com/repos/davoudarsalani/scripts/actions/secrets/{secret_name}
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/workflows
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/workflows/{workflow_id}
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/workflows/{workflow_id}/disable
+post    https://api.github.com/repos/davoudarsalani/scripts/actions/workflows/{workflow_id}/dispatches
+put     https://api.github.com/repos/davoudarsalani/scripts/actions/workflows/{workflow_id}/enable
+get     https://api.github.com/repos/davoudarsalani/scripts/actions/workflows/{workflow_id}/runs
+get     https://api.github.com/repositories/{repository_id}/environments/{environment_name}/secrets
+get     https://api.github.com/repositories/{repository_id}/environments/{environment_name}/secrets/public-key
+get     https://api.github.com/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+put     https://api.github.com/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+delete  https://api.github.com/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+
+activity
+
+get     https://api.github.com/events
+get     https://api.github.com/feeds
+get     https://api.github.com/networks/davoudarsalani/scripts/events
+get     https://api.github.com/repos/davoudarsalani/scripts/events
+get     https://api.github.com/repos/davoudarsalani/scripts/stargazers
+get     https://api.github.com/repos/davoudarsalani/scripts/subscribers
+get     https://api.github.com/users/davoudarsalani/events
+get     https://api.github.com/users/davoudarsalani/events/public
+get     https://api.github.com/users/davoudarsalani/received_events
+get     https://api.github.com/users/davoudarsalani/received_events/public
+get     https://api.github.com/users/davoudarsalani/starred
+get     https://api.github.com/users/davoudarsalani/subscriptions
+
+apps
+
+get     https://api.github.com/app
+get     https://api.github.com/app/installations
+get     https://api.github.com/app/installations/{installation_id}
+post    https://api.github.com/app/installations/{installation_id}/access_tokens
+get     https://api.github.com/apps/{app_slug}
+get     https://api.github.com/installation/repositories
+delete  https://api.github.com/installation/token
+
+billing
+
+
+checks
+
+post    https://api.github.com/repos/davoudarsalani/scripts/check-runs
+get     https://api.github.com/repos/davoudarsalani/scripts/check-runs/{check_run_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/check-runs/{check_run_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/check-runs/{check_run_id}/annotations
+post    https://api.github.com/repos/davoudarsalani/scripts/check-runs/{check_run_id}/rerequest
+post    https://api.github.com/repos/davoudarsalani/scripts/check-suites
+patch   https://api.github.com/repos/davoudarsalani/scripts/check-suites/preferences
+get     https://api.github.com/repos/davoudarsalani/scripts/check-suites/{check_suite_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/check-suites/{check_suite_id}/check-runs
+post    https://api.github.com/repos/davoudarsalani/scripts/check-suites/{check_suite_id}/rerequest
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{ref}/check-runs
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{ref}/check-suites
+
+code-scanning
+
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/alerts
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/alerts/{alert_number}
+patch   https://api.github.com/repos/davoudarsalani/scripts/code-scanning/alerts/{alert_number}
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/alerts/{alert_number}/instances
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/analyses
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/analyses/{analysis_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/code-scanning/analyses/{analysis_id}
+post    https://api.github.com/repos/davoudarsalani/scripts/code-scanning/sarifs
+get     https://api.github.com/repos/davoudarsalani/scripts/code-scanning/sarifs/{sarif_id}
+
+codes-of-conduct
+
+get     https://api.github.com/codes_of_conduct
+get     https://api.github.com/codes_of_conduct/{key}
+
+emojis
+
+get     https://api.github.com/emojis
+
+enterprise-admin
+
+get     https://api.github.com/scim/v2/enterprises/{enterprise}/Groups
+post    https://api.github.com/scim/v2/enterprises/{enterprise}/Groups
+get     https://api.github.com/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+put     https://api.github.com/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+patch   https://api.github.com/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+delete  https://api.github.com/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+get     https://api.github.com/scim/v2/enterprises/{enterprise}/Users
+post    https://api.github.com/scim/v2/enterprises/{enterprise}/Users
+get     https://api.github.com/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+put     https://api.github.com/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+patch   https://api.github.com/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+delete  https://api.github.com/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+git
+
+post    https://api.github.com/repos/davoudarsalani/scripts/git/blobs
+get     https://api.github.com/repos/davoudarsalani/scripts/git/blobs/{file_sha}
+post    https://api.github.com/repos/davoudarsalani/scripts/git/commits
+get     https://api.github.com/repos/davoudarsalani/scripts/git/commits/{commit_sha}
+get     https://api.github.com/repos/davoudarsalani/scripts/git/matching-refs/{ref}
+get     https://api.github.com/repos/davoudarsalani/scripts/git/ref/{ref}
+post    https://api.github.com/repos/davoudarsalani/scripts/git/refs
+patch   https://api.github.com/repos/davoudarsalani/scripts/git/refs/{ref}
+delete  https://api.github.com/repos/davoudarsalani/scripts/git/refs/{ref}
+post    https://api.github.com/repos/davoudarsalani/scripts/git/tags
+get     https://api.github.com/repos/davoudarsalani/scripts/git/tags/{tag_sha}
+post    https://api.github.com/repos/davoudarsalani/scripts/git/trees
+get     https://api.github.com/repos/davoudarsalani/scripts/git/trees/{tree_sha}
+
+gitignore
+
+get     https://api.github.com/gitignore/templates
+get     https://api.github.com/gitignore/templates/{name}
+
+interactions
+
+get     https://api.github.com/repos/davoudarsalani/scripts/interaction-limits
+put     https://api.github.com/repos/davoudarsalani/scripts/interaction-limits
+delete  https://api.github.com/repos/davoudarsalani/scripts/interaction-limits
+
+issues
+
+get     https://api.github.com/repos/davoudarsalani/scripts/assignees
+get     https://api.github.com/repos/davoudarsalani/scripts/assignees/{assignee}
+get     https://api.github.com/repos/davoudarsalani/scripts/issues
+post    https://api.github.com/repos/davoudarsalani/scripts/issues
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/events
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/events/{event_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}
+patch   https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}
+post    https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/assignees
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/assignees
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/comments
+post    https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/events
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/labels
+post    https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/labels
+put     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/labels
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/labels
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/labels/{name}
+put     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/lock
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/lock
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/timeline
+get     https://api.github.com/repos/davoudarsalani/scripts/labels
+post    https://api.github.com/repos/davoudarsalani/scripts/labels
+get     https://api.github.com/repos/davoudarsalani/scripts/labels/{name}
+patch   https://api.github.com/repos/davoudarsalani/scripts/labels/{name}
+delete  https://api.github.com/repos/davoudarsalani/scripts/labels/{name}
+get     https://api.github.com/repos/davoudarsalani/scripts/milestones
+post    https://api.github.com/repos/davoudarsalani/scripts/milestones
+get     https://api.github.com/repos/davoudarsalani/scripts/milestones/{milestone_number}
+patch   https://api.github.com/repos/davoudarsalani/scripts/milestones/{milestone_number}
+delete  https://api.github.com/repos/davoudarsalani/scripts/milestones/{milestone_number}
+get     https://api.github.com/repos/davoudarsalani/scripts/milestones/{milestone_number}/labels
+
+licenses
+
+get     https://api.github.com/licenses
+get     https://api.github.com/licenses/{license}
+get     https://api.github.com/repos/davoudarsalani/scripts/license
+
+markdown
+
+post    https://api.github.com/markdown
+post    https://api.github.com/markdown/raw
+
+meta
+
+get     https://api.github.com/
+get     https://api.github.com/meta
+get     https://api.github.com/octocat
+get     https://api.github.com/zen
+
+migrations
+
+get     https://api.github.com/repos/davoudarsalani/scripts/import
+put     https://api.github.com/repos/davoudarsalani/scripts/import
+patch   https://api.github.com/repos/davoudarsalani/scripts/import
+delete  https://api.github.com/repos/davoudarsalani/scripts/import
+get     https://api.github.com/repos/davoudarsalani/scripts/import/authors
+patch   https://api.github.com/repos/davoudarsalani/scripts/import/authors/{author_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/import/large_files
+patch   https://api.github.com/repos/davoudarsalani/scripts/import/lfs
+
+orgs
+
+get     https://api.github.com/organizations
+get     https://api.github.com/organizations/{organization_id}/custom_roles
+get     https://api.github.com/users/davoudarsalani/orgs
+
+projects
+
+get     https://api.github.com/projects/columns/cards/{card_id}
+patch   https://api.github.com/projects/columns/cards/{card_id}
+delete  https://api.github.com/projects/columns/cards/{card_id}
+post    https://api.github.com/projects/columns/cards/{card_id}/moves
+get     https://api.github.com/projects/columns/{column_id}
+patch   https://api.github.com/projects/columns/{column_id}
+delete  https://api.github.com/projects/columns/{column_id}
+get     https://api.github.com/projects/columns/{column_id}/cards
+post    https://api.github.com/projects/columns/{column_id}/cards
+post    https://api.github.com/projects/columns/{column_id}/moves
+get     https://api.github.com/projects/{project_id}
+patch   https://api.github.com/projects/{project_id}
+delete  https://api.github.com/projects/{project_id}
+get     https://api.github.com/projects/{project_id}/collaborators
+put     https://api.github.com/projects/{project_id}/collaborators/davoudarsalani
+delete  https://api.github.com/projects/{project_id}/collaborators/davoudarsalani
+get     https://api.github.com/projects/{project_id}/collaborators/davoudarsalani/permission
+get     https://api.github.com/projects/{project_id}/columns
+post    https://api.github.com/projects/{project_id}/columns
+get     https://api.github.com/repos/davoudarsalani/scripts/projects
+post    https://api.github.com/repos/davoudarsalani/scripts/projects
+post    https://api.github.com/user/projects
+
+pulls
+
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}
+patch   https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/comments
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/commits
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/files
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/merge
+put     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/merge
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/requested_reviewers
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/requested_reviewers
+delete  https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/requested_reviewers
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}
+put     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}/comments
+put     https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}/dismissals
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls/{pull_number}/reviews/{review_id}/events
+
+rate-limit
+
+get     https://api.github.com/rate_limit
+
+reactions
+
+delete  https://api.github.com/reactions/{reaction_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}/reactions
+post    https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}/reactions
+delete  https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}/reactions/{reaction_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}/reactions
+post    https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}/reactions
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/comments/{comment_id}/reactions/{reaction_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/reactions
+delete  https://api.github.com/repos/davoudarsalani/scripts/issues/{issue_number}/reactions/{reaction_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}/reactions
+post    https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}/reactions
+delete  https://api.github.com/repos/davoudarsalani/scripts/pulls/comments/{comment_id}/reactions/{reaction_id}
+post    https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}/reactions
+get     https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+post    https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+get     https://api.github.com/teams/{team_id}/discussions/{discussion_number}/reactions
+
+repos
+
+get     https://api.github.com/repos/davoudarsalani/scripts
+patch   https://api.github.com/repos/davoudarsalani/scripts
+delete  https://api.github.com/repos/davoudarsalani/scripts
+get     https://api.github.com/repos/davoudarsalani/scripts/autolinks
+post    https://api.github.com/repos/davoudarsalani/scripts/autolinks
+get     https://api.github.com/repos/davoudarsalani/scripts/autolinks/{autolink_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/autolinks/{autolink_id}
+put     https://api.github.com/repos/davoudarsalani/scripts/automated-security-fixes
+delete  https://api.github.com/repos/davoudarsalani/scripts/automated-security-fixes
+get     https://api.github.com/repos/davoudarsalani/scripts/branches
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection
+put     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/enforce_admins
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/enforce_admins
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/enforce_admins
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_pull_request_reviews
+patch   https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_pull_request_reviews
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_pull_request_reviews
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_signatures
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_signatures
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_signatures
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks
+patch   https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks/contexts
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks/contexts
+put     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks/contexts
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/required_status_checks/contexts
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/apps
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/apps
+put     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/apps
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/apps
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/teams
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/teams
+put     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/teams
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/teams
+get     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/users
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/users
+put     https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/users
+delete  https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/protection/restrictions/users
+post    https://api.github.com/repos/davoudarsalani/scripts/branches/{branch}/rename
+get     https://api.github.com/repos/davoudarsalani/scripts/collaborators
+get     https://api.github.com/repos/davoudarsalani/scripts/collaborators/davoudarsalani
+put     https://api.github.com/repos/davoudarsalani/scripts/collaborators/davoudarsalani
+delete  https://api.github.com/repos/davoudarsalani/scripts/collaborators/davoudarsalani
+get     https://api.github.com/repos/davoudarsalani/scripts/collaborators/davoudarsalani/permission
+get     https://api.github.com/repos/davoudarsalani/scripts/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/comments/{comment_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/commits
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{commit_sha}/branches-where-head
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{commit_sha}/comments
+post    https://api.github.com/repos/davoudarsalani/scripts/commits/{commit_sha}/comments
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{commit_sha}/pulls
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{ref}
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{ref}/status
+get     https://api.github.com/repos/davoudarsalani/scripts/commits/{ref}/statuses
+get     https://api.github.com/repos/davoudarsalani/scripts/community/profile
+get     https://api.github.com/repos/davoudarsalani/scripts/compare/{basehead}
+get     https://api.github.com/repos/davoudarsalani/scripts/contents/{path}
+put     https://api.github.com/repos/davoudarsalani/scripts/contents/{path}
+delete  https://api.github.com/repos/davoudarsalani/scripts/contents/{path}
+get     https://api.github.com/repos/davoudarsalani/scripts/contributors
+get     https://api.github.com/repos/davoudarsalani/scripts/deployments
+post    https://api.github.com/repos/davoudarsalani/scripts/deployments
+get     https://api.github.com/repos/davoudarsalani/scripts/deployments/{deployment_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/deployments/{deployment_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/deployments/{deployment_id}/statuses
+post    https://api.github.com/repos/davoudarsalani/scripts/deployments/{deployment_id}/statuses
+get     https://api.github.com/repos/davoudarsalani/scripts/deployments/{deployment_id}/statuses/{status_id}
+post    https://api.github.com/repos/davoudarsalani/scripts/dispatches
+get     https://api.github.com/repos/davoudarsalani/scripts/environments
+get     https://api.github.com/repos/davoudarsalani/scripts/environments/{environment_name}
+put     https://api.github.com/repos/davoudarsalani/scripts/environments/{environment_name}
+delete  https://api.github.com/repos/davoudarsalani/scripts/environments/{environment_name}
+get     https://api.github.com/repos/davoudarsalani/scripts/forks
+post    https://api.github.com/repos/davoudarsalani/scripts/forks
+get     https://api.github.com/repos/davoudarsalani/scripts/hooks
+post    https://api.github.com/repos/davoudarsalani/scripts/hooks
+get     https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/config
+patch   https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/config
+get     https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/deliveries
+get     https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/deliveries/{delivery_id}
+post    https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+post    https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/pings
+post    https://api.github.com/repos/davoudarsalani/scripts/hooks/{hook_id}/tests
+get     https://api.github.com/repos/davoudarsalani/scripts/invitations
+patch   https://api.github.com/repos/davoudarsalani/scripts/invitations/{invitation_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/invitations/{invitation_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/keys
+post    https://api.github.com/repos/davoudarsalani/scripts/keys
+get     https://api.github.com/repos/davoudarsalani/scripts/keys/{key_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/keys/{key_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/languages
+post    https://api.github.com/repos/davoudarsalani/scripts/merge-upstream
+post    https://api.github.com/repos/davoudarsalani/scripts/merges
+get     https://api.github.com/repos/davoudarsalani/scripts/pages
+post    https://api.github.com/repos/davoudarsalani/scripts/pages
+put     https://api.github.com/repos/davoudarsalani/scripts/pages
+delete  https://api.github.com/repos/davoudarsalani/scripts/pages
+get     https://api.github.com/repos/davoudarsalani/scripts/pages/builds
+post    https://api.github.com/repos/davoudarsalani/scripts/pages/builds
+get     https://api.github.com/repos/davoudarsalani/scripts/pages/builds/latest
+get     https://api.github.com/repos/davoudarsalani/scripts/pages/builds/{build_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/pages/health
+get     https://api.github.com/repos/davoudarsalani/scripts/readme
+get     https://api.github.com/repos/davoudarsalani/scripts/readme/{dir}
+get     https://api.github.com/repos/davoudarsalani/scripts/releases
+post    https://api.github.com/repos/davoudarsalani/scripts/releases
+get     https://api.github.com/repos/davoudarsalani/scripts/releases/assets/{asset_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/releases/assets/{asset_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/releases/assets/{asset_id}
+post    https://api.github.com/repos/davoudarsalani/scripts/releases/generate-notes
+get     https://api.github.com/repos/davoudarsalani/scripts/releases/latest
+get     https://api.github.com/repos/davoudarsalani/scripts/releases/tags/{tag}
+get     https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}
+patch   https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}
+delete  https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}
+get     https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}/assets
+post    https://api.github.com/repos/davoudarsalani/scripts/releases/{release_id}/assets
+get     https://api.github.com/repos/davoudarsalani/scripts/stats/code_frequency
+get     https://api.github.com/repos/davoudarsalani/scripts/stats/commit_activity
+get     https://api.github.com/repos/davoudarsalani/scripts/stats/contributors
+get     https://api.github.com/repos/davoudarsalani/scripts/stats/participation
+get     https://api.github.com/repos/davoudarsalani/scripts/stats/punch_card
+post    https://api.github.com/repos/davoudarsalani/scripts/statuses/{sha}
+get     https://api.github.com/repos/davoudarsalani/scripts/tags
+get     https://api.github.com/repos/davoudarsalani/scripts/tarball/{ref}
+get     https://api.github.com/repos/davoudarsalani/scripts/teams
+get     https://api.github.com/repos/davoudarsalani/scripts/topics
+put     https://api.github.com/repos/davoudarsalani/scripts/topics
+get     https://api.github.com/repos/davoudarsalani/scripts/traffic/clones
+get     https://api.github.com/repos/davoudarsalani/scripts/traffic/popular/paths
+get     https://api.github.com/repos/davoudarsalani/scripts/traffic/popular/referrers
+get     https://api.github.com/repos/davoudarsalani/scripts/traffic/views
+post    https://api.github.com/repos/davoudarsalani/scripts/transfer
+put     https://api.github.com/repos/davoudarsalani/scripts/vulnerability-alerts
+delete  https://api.github.com/repos/davoudarsalani/scripts/vulnerability-alerts
+get     https://api.github.com/repos/davoudarsalani/scripts/zipball/{ref}
+get     https://api.github.com/repositories
+get     https://api.github.com/users/davoudarsalani/repos
+
+scim
+
+get     https://api.github.com/scim/v2/organizations/{org}/Users
+post    https://api.github.com/scim/v2/organizations/{org}/Users
+get     https://api.github.com/scim/v2/organizations/{org}/Users/{scim_user_id}
+put     https://api.github.com/scim/v2/organizations/{org}/Users/{scim_user_id}
+patch   https://api.github.com/scim/v2/organizations/{org}/Users/{scim_user_id}
+delete  https://api.github.com/scim/v2/organizations/{org}/Users/{scim_user_id}
+
+search
+
+get     https://api.github.com/search/code
+get     https://api.github.com/search/commits
+get     https://api.github.com/search/issues
+get     https://api.github.com/search/labels
+get     https://api.github.com/search/repositories
+get     https://api.github.com/search/topics
+get     https://api.github.com/search/users
+
+secret-scanning
+
+get     https://api.github.com/repos/davoudarsalani/scripts/secret-scanning/alerts
+get     https://api.github.com/repos/davoudarsalani/scripts/secret-scanning/alerts/{alert_number}
+patch   https://api.github.com/repos/davoudarsalani/scripts/secret-scanning/alerts/{alert_number}
+get     https://api.github.com/repos/davoudarsalani/scripts/secret-scanning/alerts/{alert_number}/locations
+
+teams
+
+get     https://api.github.com/teams/{team_id}
+patch   https://api.github.com/teams/{team_id}
+delete  https://api.github.com/teams/{team_id}
+get     https://api.github.com/teams/{team_id}/discussions
+post    https://api.github.com/teams/{team_id}/discussions
+get     https://api.github.com/teams/{team_id}/discussions/{discussion_number}
+patch   https://api.github.com/teams/{team_id}/discussions/{discussion_number}
+delete  https://api.github.com/teams/{team_id}/discussions/{discussion_number}
+get     https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments
+post    https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments
+get     https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+patch   https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+delete  https://api.github.com/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+get     https://api.github.com/teams/{team_id}/invitations
+get     https://api.github.com/teams/{team_id}/members
+get     https://api.github.com/teams/{team_id}/members/davoudarsalani
+put     https://api.github.com/teams/{team_id}/members/davoudarsalani
+delete  https://api.github.com/teams/{team_id}/members/davoudarsalani
+get     https://api.github.com/teams/{team_id}/memberships/davoudarsalani
+put     https://api.github.com/teams/{team_id}/memberships/davoudarsalani
+delete  https://api.github.com/teams/{team_id}/memberships/davoudarsalani
+get     https://api.github.com/teams/{team_id}/projects
+get     https://api.github.com/teams/{team_id}/projects/{project_id}
+put     https://api.github.com/teams/{team_id}/projects/{project_id}
+delete  https://api.github.com/teams/{team_id}/projects/{project_id}
+get     https://api.github.com/teams/{team_id}/repos
+get     https://api.github.com/teams/{team_id}/repos/davoudarsalani/scripts
+put     https://api.github.com/teams/{team_id}/repos/davoudarsalani/scripts
+delete  https://api.github.com/teams/{team_id}/repos/davoudarsalani/scripts
+get     https://api.github.com/teams/{team_id}/teams
+
+users
+
+get     https://api.github.com/users
+get     https://api.github.com/users/davoudarsalani
+get     https://api.github.com/users/davoudarsalani/followers
+get     https://api.github.com/users/davoudarsalani/following
+get     https://api.github.com/users/davoudarsalani/following/{target_user}
+get     https://api.github.com/users/davoudarsalani/gpg_keys
+get     https://api.github.com/users/davoudarsalani/keys

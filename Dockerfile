@@ -16,25 +16,28 @@ CMD bash
 # docker exec -t cnt python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"
 
 
-## clone/tar
+
+
+## clone/tar (FIXME not working with clone-* options)  265MB
+##   vv 3.15 didn't work
 FROM alpine:3.12
-    ## ^^ 3.15 didn't wotk
-RUN apk add --no-cache \
-    bash git tzdata \
-    automake libtool make autoconf build-base g++ gcc
-    # not found: glibtoolize libjalali-dev
+RUN apk add --no-cache bash git tzdata \
+    automake libtool make autoconf file g++
+    # if necessary: build-base gcc
+    # not found: build-essential libjalali-dev
 SHELL ["/bin/bash", "-c"]
 RUN cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
     printf 'Asia/Tehran\n' > /etc/timezone && \
-    wget https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jcal && \
+    wget -q https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jcal && \
     chmod +x ./install-jcal && \
-    sed -i 's/mktemp --directory/mktemp -d/' ./install-jcal && \
-    sed -i '/autogen/,$d' ./install-jcal && \
+    sed -i '/ldconfig/d' ./install-jcal && \
+    sed -i 's|mktemp --directory|mktemp -d|' ./install-jcal && \
+    sed -i 's|^\(\./autogen.*\)|bash -c "\1"|' ./install-jcal && \
+    sed -i 's|^\(\./configure.*\)|bash -c "\1"|' ./install-jcal && \
+    sed -i 's|^ *\(make.*\)|bash -c "\1"|' ./install-jcal && \
     ./install-jcal 'gnu' && \
-    cd /tmp/tmp*/sources && \
-    ./autogen.sh && \
-    ./configure && \
-    make && \
-    make install
-    # /sbin/ldconfig skipped because doesn't work on Alpine
+    rm ./install-jcal && \
+    rm -rf /tmp/tmp*
 CMD bash
+# --disable-dependency-tracking
+# libtoolize --force ; aclocal ; autoheader ; automake --force-missing --add-missing ; autoconf ; ./configure ; make

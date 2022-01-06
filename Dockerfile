@@ -1,44 +1,80 @@
-## clone/tar (FIXME not working with clone-* options)
+## clone/tar (FIXME not working with clone-* for source)
 FROM alpine:3.15
-ARG script="/tmp/install-jcal" pkgs="automake libtool make autoconf file g++ git tzdata" source="nongnu"
+ARG source="nongnu"
+## vv NOTE removing automake and libtool from this list made image to be 45MB
+ARG pkgs="automake libtool make autoconf file g++ git tzdata bash"
+ARG versions="echo -e \"\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')\\n\$(bash --version | sed '1q;d')\\n\$(jdate --version | xargs)\\n\$(jdate)\""
+ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
+ARG script=/tmp/install-jcal
+ARG username="jdate"
+ARG bashrc_file=/home/"$username"/.bashrc
 ADD https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jcal "$script"
-RUN apk add --no-cache bash $pkgs && \
+RUN set -x && \
+    apk add --no-cache $pkgs && \
+    \
+    sed -i '/ldconfig/d' "$script" && \
+    sed -i '/INSTALLING-DEPENDENCIES::START/,/INSTALLING-DEPENDENCIES::END/d' "$script" && \
+    ## vv NOTE downloads $source version:
+    # sed -i 's|) dl_xtract.*|) dl_xtract "https://www.dl.davoudarsalani.ir/DL/Temp/${source}-jcal-latest.tar.gz" ;;|g' "$script" && \
+    chmod +x "$script" && \
+    "$script" "$source" && \
+    \
+    adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+    \
+    printf '%s\n' "$versions" >> "$bashrc_file" && \
+    printf '%s\n' "$prompt" >> "$bashrc_file" && \
+    chown "$username" "$bashrc_file" && \
     \
     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
     printf 'Asia/Tehran\n' > /etc/timezone && \
     \
-    sed -i '/ldconfig/d' "$script" && \
-    chmod +x "$script" && \
-    "$script" "$source" && \
-    \
-    apk del $pkgs && \
-    \
+    apk del ${pkgs/bash} && \
     rm -v "$script" && \
-    unset script pkgs source && \
-    rm -rfv /tmp/tmp*
+    rm -rfv /tmp/tmp* && \
+    unset source pkgs versions prompt script bashrc_file && \
+    set +x
+USER "$username"
+WORKDIR /home/"$username"
 CMD bash
-## alpine3.15 bash=5.1.8   8.21MB
-## alpine3.12 bash=5.0.17  8.08MB
-## alpine3.11 bash=5.0.11  7.88MB
-## alpine3.10 bash=5.0.0   7.84MB
 
-# docker build --tag jcal:nongnu-alpine3.15-bash5.1.8 . && docker image ls -a
-# docker run --rm jcal:nongnu-alpine3.15-bash5.1.8 jdate
-
-# --disable-dependency-tracking  **  libtoolize --force; aclocal; autoheader; automake --force-missing --add-missing; autoconf; ./configure
+# docker build --tag jcal . && docker image ls -a
+# docker run --rm -t jcal jdate
 # ------------------------------------------------------------------------------------
-## jdatetime
+# docker rm -f $(docker ps -aq); docker rmi -f $(docker image ls -aq)
+# ------------------------------------------------------------------------------------
+## jdatetime (59.8MB)
 # FROM python:3.10-alpine3.15
-# RUN apk add --no-cache bash && \
+# ARG versions="echo -e \"\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')\\n\$(python --version)\\njdatetime \$(python -c \"import jdatetime; print(jdatetime.__VERSION__)\")\\n\$(python -c \"import jdatetime; print(jdatetime.datetime.now())\")\""
+# ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
+# ARG username="jdatetime"
+# ARG bashrc_file=/home/"$username"/.bashrc
+# ARG startup_file=/home/"$username"/python_startup.py
+# RUN set -x && \
+#     apk add --no-cache bash && \
+#     \
+#     adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+#     \
+#     printf 'import jdatetime\n' >> "$startup_file" && \
+#     printf 'print("+++ jdatetime imported")\n' >> "$startup_file" && \
+#     chown "$username" "$startup_file" && \
+#     chmod +x "$startup_file" && \
+#     \
+#     printf '%s\n' "$versions" >> "$bashrc_file" && \
+#     printf '%s\n' "$prompt" >> "$bashrc_file" && \
+#     printf 'export PYTHONSTARTUP="$HOME"/python_startup.py\n' >> "$bashrc_file" && \
+#     chown "$username" "$bashrc_file" && \
 #     \
 #     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
 #     printf 'Asia/Tehran\n' > /etc/timezone && \
 #     \
-#     pip3 install --upgrade --no-cache-dir --disable-pip-version-check pip jdatetime  ## pip3/pip install
+#     pip install --upgrade --no-cache-dir --disable-pip-version-check pip jdatetime && \
+#     \
+#     apk del tzdata && \
+#     unset versions prompt bashrc_file startup_file && \
+#     set +x
+# USER "$username"
+# WORKDIR /home/"$username"
 # CMD bash
-# docker build --tag jcal:jdatetime3.7.0-python3.10-alpine3.15 .
 
-## no CNT:  docker run --rm jcal:jdatetime3.7.0-python3.10-alpine3.15 python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"
-
-## CNT:  docker run -d -t --name cnt jcal:jdatetime3.7.0-python3.10-alpine3.15
-#        docker exec -t cnt python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"
+# docker build --tag jcal . && docker image ls -a
+# docker run --rm -t jcal python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"

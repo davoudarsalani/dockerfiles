@@ -1,4 +1,45 @@
-## clone/tar (FIXME not working with clone-* for source)
+## capture-website-cli (404MB)
+FROM alpine:3.15
+ARG versions="echo -e \"\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')\\nnodejs \$(node --version)\\ncapture-website-cli \$(capture-website --version)\""
+ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
+ARG username="cwc"
+ARG bashrc_file=/home/"$username"/.bashrc
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+RUN set -x && \
+    apk add --no-cache \
+      chromium nss freetype harfbuzz ca-certificates ttf-freefont nodejs yarn \
+      npm bash && \
+    yarn add puppeteer@10.0.0 && \
+    \
+    adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+    mkdir -p /home/"$username"/Downloads /app && \
+    chown -R "$username":"$username" /home/"$username" && \
+    chown -R "$username":"$username" /app && \
+    \
+    npm install --global capture-website-cli && \
+    \
+    printf '%s\n' "$versions" >> "$bashrc_file" && \
+    printf '%s\n' "$prompt" >> "$bashrc_file" && \
+    chown "$username" "$bashrc_file" && \
+    \
+    apk del npm && \
+    set +x
+USER "$username"
+WORKDIR /home/"$username"
+CMD bash
+
+## ccc:
+#  docker run -t -d --cap-add=SYS_ADMIN --name ccc iii && docker exec -t ccc capture-website --delay=5 https://www.davoudarsalani.ir > screenshot.png
+
+## NO ccc (frequently threw session timeout error in pwd):
+#  docker run --rm -t --cap-add=SYS_ADMIN iii capture-website --delay=5 https://www.davoudarsalani.ir > screenshot.png
+# ------------------------------------------------------------------------------------
+# docker rm -f $(docker ps -aq); docker rmi -f $(docker image ls -aq)
+# docker build --tag iii . && docker image ls -a
+# docker run --rm -t iii COMMAND
+# ------------------------------------------------------------------------------------
+## {{{ clone/tar (FIXME not working with clone-* for source)
 FROM alpine:3.15
 ARG source="nongnu"
 ## vv NOTE removing automake and libtool from this list made image to be 45MB
@@ -36,13 +77,10 @@ RUN set -x && \
 USER "$username"
 WORKDIR /home/"$username"
 CMD bash
-
-# docker build --tag jcal . && docker image ls -a
-# docker run --rm -t jcal jdate
+## }}}
+# COMMAND: jdate '+%Y %H:%M'
 # ------------------------------------------------------------------------------------
-# docker rm -f $(docker ps -aq); docker rmi -f $(docker image ls -aq)
-# ------------------------------------------------------------------------------------
-## jdatetime (59.8MB)
+## {{{ jdatetime (59.8MB)
 # FROM python:3.10-alpine3.15
 # ARG versions="echo -e \"\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')\\n\$(python --version)\\njdatetime \$(python -c \"import jdatetime; print(jdatetime.__VERSION__)\")\\n\$(python -c \"import jdatetime; print(jdatetime.datetime.now())\")\""
 # ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
@@ -75,6 +113,5 @@ CMD bash
 # USER "$username"
 # WORKDIR /home/"$username"
 # CMD bash
-
-# docker build --tag jcal . && docker image ls -a
-# docker run --rm -t jcal python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"
+## }}}
+## COMMAND: python -c "import jdatetime; print(jdatetime.datetime.now().strftime('%Y %H:%M'))"

@@ -6,7 +6,10 @@
 # docker run --rm -t --cap-add=SYS_ADMIN iii capture-website --delay=5 https://www.davoudarsalani.ir > screenshot.png
 
 FROM alpine:3.15
-ARG versions="echo -e \"\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')\\nnodejs \$(node --version)\\ncapture-website-cli \$(capture-website --version)\""
+ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')"
+ARG nodejs_version="nodejs \$(node --version)"
+ARG cwc_version="capture-website-cli \$(capture-website --version)"
+ARG versions="echo -e \"${os_version}\\n${nodejs_version}\\n${cwc_version}\""
 ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
 ARG username="cwc"
 ARG bashrc_file=/home/"$username"/.bashrc
@@ -30,9 +33,17 @@ RUN set -x && \
     chown "$username" "$bashrc_file" && \
     \
     apk del npm && \
+    unset os_version nodejs_version cwc_version versions prompt bashrc_file && \
     set +x
 USER "$username"
 WORKDIR /home/"$username"
 CMD bash
+
+## {{{ useful links:
+## https://github.com/sindresorhus/pageres-cli
+## https://github.com/sindresorhus/capture-website-cli
+## https://github.com/timoschwarzer/capture-website-docker
+## https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-on-alpine
+## }}}
 
 # vim:ft=dockerfile

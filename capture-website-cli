@@ -21,7 +21,7 @@ RUN set -x && \
       npm bash && \
     yarn add puppeteer@10.0.0 && \
     \
-    adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
     mkdir -p /home/"$username"/Downloads /app && \
     chown -R "$username":"$username" /home/"$username" && \
     chown -R "$username":"$username" /app && \

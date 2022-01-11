@@ -17,7 +17,7 @@ ARG startup_file=/home/"$username"/python_startup.py
 RUN set -x && \
     apk add --no-cache bash && \
     \
-    adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
     \
     printf 'import jdatetime\n' >> "$startup_file" && \
     printf 'print("+++ jdatetime imported")\n' >> "$startup_file" && \

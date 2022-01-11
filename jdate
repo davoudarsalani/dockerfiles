@@ -27,7 +27,7 @@ RUN set -x && \
     chmod +x "$script" && \
     "$script" "$source" && \
     \
-    adduser --uid 1001 --shell /bin/bash --disabled-password "$username" && \
+    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
     \
     printf '%s\n' "$versions" >> "$bashrc_file" && \
     printf '%s\n' "$prompt" >> "$bashrc_file" && \

@@ -1,0 +1,57 @@
+FROM python:3.10-alpine3.15
+
+ARG jdate_source="nongnu"
+ARG jdate_pkgs="automake libtool make autoconf file g++ git"
+ARG jdate_version="\$(jdate --version | xargs)"
+ARG jdate_script=/tmp/install-jdate
+ADD https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jdate "$jdate_script"
+
+ARG modules="khayyam jdatetime"
+ARG jdatetime_version="jdatetime \$(python -c \"import jdatetime; print(jdatetime.__VERSION__)\")"
+ARG khayyam_version="khayyam \$(python -c \"import khayyam; print(khayyam.__version__)\")"
+ARG kh_pkgs="cmake gcc libxml2 automake g++ subversion python3-dev libxml2-dev libxslt-dev lapack-dev gfortran"
+
+ARG username="multi"
+ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')"
+ARG python_version="\$(python --version)"
+ARG current="\$(jdate)"
+ARG info="echo -e \"${os_version}\\n${python_version}\\n${khayyam_version}\\n${jdatetime_version}\\n${jdate_version}\\n${current}\""
+ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
+ARG bashrc_file=/home/"$username"/.bashrc
+ARG startup_file=/home/"$username"/python-startup.py
+RUN set -x && \
+    apk add --no-cache bash $jdate_pkgs $kh_pkgs && \
+    \
+    sed -i '/ldconfig/d' "$jdate_script" && \
+    sed -i '/INSTALLING-DEPENDENCIES::START/,/INSTALLING-DEPENDENCIES::END/d' "$jdate_script" && \
+    # sed -i "s|\([\'\"]$jdate_source[\'\"] \+) \+dl_xtract \+\).*|\1 'https://www.dl.davoudarsalani.ir/DL/Temp/${jdate_source}-jcal-latest.tar.gz' ;;|g" "$jdate_script" && \
+    chmod +x "$jdate_script" && \
+    "$jdate_script" "$jdate_source" && \
+    \
+    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
+    \
+    printf '%s\n' "$info" >> "$bashrc_file" && \
+    printf '%s\n' "$prompt" >> "$bashrc_file" && \
+    printf 'export PYTHONSTARTUP=%s\n' "$startup_file" >> "$bashrc_file" && \
+    chown "$username" "$bashrc_file" && \
+    \
+    printf 'import %s\n' "${modules// /, }" >> "$startup_file" && \
+    printf "print(\"+++\\\n+++ '%s' imported\\\n+++\")\n" "${modules// /\' and \'}" >> "$startup_file" && \
+    chown "$username" "$startup_file" && \
+    chmod +x "$startup_file" && \
+    \
+    cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
+    printf 'Asia/Tehran\n' > /etc/timezone && \
+    \
+    pip install --upgrade --no-cache-dir --disable-pip-version-check pip $modules && \
+    \
+    apk del tzdata $jdate_pkgs $kh_pkgs && \
+    rm -rfv "$script" /tmp/tmp* && \
+    unset jdate_source jdate_pkgs jdate_version jdate_script modules jdatetime_version khayyam_version kh_pkgs \
+      username os_version python_version current info prompt bashrc_file startup_file && \
+    set +x
+USER "$username"
+WORKDIR /home/"$username"
+CMD bash
+
+# vim:ft=dockerfile

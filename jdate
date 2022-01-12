@@ -7,7 +7,7 @@
 
 FROM alpine:3.15
 ARG source="nongnu"
-ARG pkgs="automake libtool make autoconf file g++ git tzdata bash"
+ARG pkgs="automake libtool make autoconf file g++ git tzdata"
 ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')"
 ARG jdate_version="\$(jdate --version | xargs)"
 ARG info="echo -e \"${os_version}\\n${jdate_version}\\n\$(jdate)\""
@@ -17,11 +17,11 @@ ARG username="jdate"
 ARG bashrc_file=/home/"$username"/.bashrc
 ADD https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jdate "$script"
 RUN set -x && \
-    apk add --no-cache $pkgs && \
+    apk add --no-cache bash $pkgs && \
     \
     sed -i '/ldconfig/d' "$script" && \
     sed -i '/INSTALLING-DEPENDENCIES::START/,/INSTALLING-DEPENDENCIES::END/d' "$script" && \
-    ## vv NOTE downloads $source version:
+                                                                                      ## vv NOTE downloads $source version:
     # sed -i 's|) dl_xtract.*|) dl_xtract "https://www.dl.davoudarsalani.ir/DL/Temp/${source}-jcal-latest.tar.gz" ;;|g' "$script" && \
     chmod +x "$script" && \
     "$script" "$source" && \
@@ -35,9 +35,8 @@ RUN set -x && \
     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
     printf 'Asia/Tehran\n' > /etc/timezone && \
     \
-    apk del ${pkgs/bash} && \
-    rm -v "$script" && \
-    rm -rfv /tmp/tmp* && \
+    apk del $pkgs && \
+    rm -rfv "$script" /tmp/tmp* && \
     unset source pkgs os_version jdate_version info prompt script bashrc_file && \
     set +x
 USER "$username"

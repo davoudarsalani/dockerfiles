@@ -6,6 +6,7 @@ ARG jdate_version="\$(jdate --version | xargs)"
 ARG jdate_script=/tmp/install-jdate
 ADD https://raw.githubusercontent.com/davoudarsalani/scripts/master/install-jdate "$jdate_script"
 
+########################################### TODO add persiantools and pytz
 ARG modules="khayyam jdatetime"
 ARG jdatetime_version="jdatetime \$(python -c \"import jdatetime; print(jdatetime.__VERSION__)\")"
 ARG khayyam_version="khayyam \$(python -c \"import khayyam; print(khayyam.__version__)\")"

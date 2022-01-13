@@ -10,15 +10,19 @@
 
 FROM python:3.10-alpine3.15
 
+# ARG module="khayyam"
+# ARG module_version="khayyam \$(python -c \"import khayyam; print(khayyam.__version__)\")"
+# ARG khayyam_pkgs="cmake gcc libxml2 automake g++ subversion python3-dev libxml2-dev libxslt-dev lapack-dev gfortran"
+# ARG current="\$(python -c \"import khayyam; print(khayyam.JalaliDatetime.now())\")"
+
+# ARG module="persiantools"
+# ARG module_version="persiantools \$(python -c \"import persiantools; print(persiantools.__version__)\")"
+# ARG extra_modules="pytz"
+# ARG current="\$(python -c \"from persiantools.jdatetime import JalaliDateTime; print(JalaliDateTime.now())\")"
+
 ARG module="jdatetime"
 ARG module_version="jdatetime \$(python -c \"import jdatetime; print(jdatetime.__VERSION__)\")"
 ARG current="\$(python -c \"import jdatetime; print(jdatetime.datetime.now())\")"
-
-## for khayyam:
-# ARG module="khayyam"
-# ARG module_version="khayyam \$(python -c \"import khayyam; print(khayyam.__version__)\")"
-# ARG current="\$(python -c \"import khayyam; print(khayyam.JalaliDatetime.now())\")"
-# ARG khayyam_pkgs="cmake gcc libxml2 automake g++ subversion python3-dev libxml2-dev libxslt-dev lapack-dev gfortran"
 
 ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')"
 ARG python_version="\$(python --version)"
@@ -45,10 +49,10 @@ RUN set -x && \
     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
     printf 'Asia/Tehran\n' > /etc/timezone && \
     \
-    pip install --upgrade --no-cache-dir --disable-pip-version-check pip "$module" && \
+    pip install --upgrade --no-cache-dir --disable-pip-version-check pip "$module" $extra_modules && \
     \
     apk del tzdata $khayyam_pkgs && \
-    unset module module_version current khayyam_pkgs os_version python_version info prompt bashrc_file startup_file && \
+    unset module module_version khayyam_pkgs current extra_modules os_version python_version info prompt bashrc_file startup_file && \
     set +x
 USER "$username"
 WORKDIR /home/"$username"

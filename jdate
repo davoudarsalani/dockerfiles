@@ -1,4 +1,4 @@
-## jdate (8.22MB)  ## FIXME not working with clone-* for source
+## FIXME not working with clone-* for source
 
 # docker rm -f $(docker ps -aq); docker rmi -f $(docker image ls -aq)
 # docker build --tag iii . && docker image ls -a

@@ -1,6 +1,4 @@
-## TODO we can del more packages
-## khayyam (61.3MB)
-## jdatetime (59.8MB)
+## TODO del more packages
 
 # docker rm -f $(docker ps -aq); docker rmi -f $(docker image ls -aq)
 # docker build --tag iii . && docker image ls -a

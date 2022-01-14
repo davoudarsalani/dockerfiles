@@ -26,23 +26,24 @@ ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')
 ARG python_version="\$(python --version)"
 ARG info="echo -e \"${os_version}\\n${python_version}\\n${module_version}\\n${current}\""
 ARG prompt="PS1=\"\[\e[0;49;32m\]\u\[\e[0m\]\[\e[0;49;90m\]@\[\e[0m\]\[\e[0;49;34m\]\w\[\e[0m\] \""
-ARG username="$module"
+ARG username="non-root"
 ARG bashrc_file=/home/"$username"/.bashrc
 ARG startup_file=/home/"$username"/python-startup.py
 RUN set -x && \
     apk add --no-cache bash $khayyam_pkgs && \
     \
-    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
+    addgroup --gid 10001 "$username" && \
+    adduser --uid 10001 --shell /bin/bash --ingroup "$username" --disabled-password "$username" && \
     \
     printf 'import %s\n' "$module" >> "$startup_file" && \
     printf "print(\"+++\\\n+++ '%s' imported\\\n+++\")\n" "$module" >> "$startup_file" && \
-    chown "$username" "$startup_file" && \
+    chown "$username":"$username" "$startup_file" && \
     chmod +x "$startup_file" && \
     \
     printf '%s\n' "$info" >> "$bashrc_file" && \
     printf '%s\n' "$prompt" >> "$bashrc_file" && \
     printf 'export PYTHONSTARTUP=%s\n' "$startup_file" >> "$bashrc_file" && \
-    chown "$username" "$bashrc_file" && \
+    chown "$username":"$username" "$bashrc_file" && \
     \
     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
     printf 'Asia/Tehran\n' > /etc/timezone && \

@@ -14,7 +14,7 @@ ARG khayyam_pkgs="cmake gcc libxml2 automake g++ subversion python3-dev libxml2-
 ## pytz is needed by persiantools
 ARG extra_modules="pytz"
 
-ARG username="multi"
+ARG username="non-root"
 ARG os_version="\$(grep '^PRETTY' /etc/os-release | sed 's/.\+=\"\(.\+\)\"/\1/')"
 ARG python_version="\$(python --version)"
 ARG current="\$(jdate)"
@@ -31,16 +31,17 @@ RUN set -x && \
     chmod +x "$jdate_script" && \
     "$jdate_script" "$jdate_source" && \
     \
-    adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
+    addgroup --gid 10001 "$username" && \
+    adduser --uid 10001 --shell /bin/bash --ingroup "$username" --disabled-password "$username" && \
     \
     printf '%s\n' "$info" >> "$bashrc_file" && \
     printf '%s\n' "$prompt" >> "$bashrc_file" && \
     printf 'export PYTHONSTARTUP=%s\n' "$startup_file" >> "$bashrc_file" && \
-    chown "$username" "$bashrc_file" && \
+    chown "$username":"$username" "$bashrc_file" && \
     \
     printf 'import %s\n' "${modules// /, }" >> "$startup_file" && \
     printf "print(\"+++\\\n+++ '%s' imported\\\n+++\")\n" "${modules// /\' and \'}" >> "$startup_file" && \
-    chown "$username" "$startup_file" && \
+    chown "$username":"$username" "$startup_file" && \
     chmod +x "$startup_file" && \
     \
     cp /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \

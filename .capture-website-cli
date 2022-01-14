@@ -21,10 +21,12 @@ RUN set -x && \
       npm bash && \
     yarn add puppeteer@10.0.0 && \
     \
+    addgroup --gid 10001 "$username" && \
     adduser --uid 10001 --shell /bin/bash --disabled-password "$username" && \
     mkdir -p /home/"$username"/Downloads /app && \
     chown -R "$username":"$username" /home/"$username" && \
     chown -R "$username":"$username" /app && \
+    chsh -s /usr/sbin/nologin root && \
     \
     npm install --global capture-website-cli && \
     \

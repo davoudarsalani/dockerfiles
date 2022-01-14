@@ -36,7 +36,7 @@ RUN set -x && \
     printf 'Asia/Tehran\n' > /etc/timezone && \
     \
     apk del $pkgs && \
-    rm -rfv "$script" /tmp/tmp* && \
+    rm -rfv "$script" /tmp/jdate_tmp* && \
     unset source pkgs os_version jdate_version info prompt script bashrc_file && \
     set +x
 USER "$username"

@@ -50,7 +50,7 @@ RUN set -x && \
     pip install --upgrade --no-cache-dir --disable-pip-version-check pip $modules $extra_modules && \
     \
     apk del tzdata $jdate_pkgs $khayyam_pkgs && \
-    rm -rfv "$script" /tmp/tmp* && \
+    rm -rfv "$script" /tmp/jdate_tmp* && \
     unset jdate_source jdate_pkgs jdate_version jdate_script modules khayyam_version persiantools_version jdatetime_version khayyam_pkgs extra_modules \
       os_version python_version current info prompt bashrc_file startup_file && \
     set +x
